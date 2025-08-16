@@ -18,19 +18,10 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     azureSubscription: 'Azure subscription 1(ab9555fc-54f9-42cb-9e01-259d57aecf69)'
-    command: 'build'
-    projects: '**/*.csproj'
+    command: 'publish'
+    publishWebProjects: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-- task: AzureRmWebAppDeployment@5
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(ab9555fc-54f9-42cb-9e01-259d57aecf69)'
-    appType: 'webAppLinux'
-    WebAppName: 'app-pipelines-dotnet-core'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|8.0'
-    DeploymentTypeLinux: 'oneDeploy'
