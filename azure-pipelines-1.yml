@@ -46,8 +46,6 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(ab9555fc-54f9-42cb-9e01-259d57aecf69)'
-    appType: 'webAppLinux'
-    WebAppName: 'app-pipelines-dotnet-core'
+    appType: 'webApp'
+    WebAppName: 'ypopovtestapp'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|6.0'
-    DeploymentTypeLinux: 'oneDeploy'
